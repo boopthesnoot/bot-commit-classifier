@@ -15,6 +15,7 @@ Here we can look at the training process: https://wandb.ai/hychin/bot-commit-cla
 
 ## Installation
 
+Instructions below were tested on MacBook Air M1 (8-core CPU, 16GB RAM) and on the cluster (56 CPU cores, 1TB RAM, Nvidia V100)
 Clone this repo, change directory to the `bot-commit-classifier` directory:
 
 ```bash
