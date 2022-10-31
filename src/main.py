@@ -1,8 +1,5 @@
 import argparse
 
-from tqdm import tqdm
-
-import cleaning
 import pandas as pd
 import pytorch_lightning as pl
 import torch
@@ -12,26 +9,25 @@ import torch.optim as optim
 import transformers
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
-from torch.optim.lr_scheduler import OneCycleLR
 from torch.utils.data import random_split, DataLoader, Dataset
+from torch.optim.lr_scheduler import OneCycleLR
+
+from tqdm import tqdm
 from transformers import AutoTokenizer, BertModel
-from nltk.tokenize import word_tokenize
+
+import cleaning
 
 transformers.logging.set_verbosity_error()
 
 
-def clean_text(x):
-    x = cleaning.replace_linebreaks(str(x))
-    x = cleaning.remove_emojis(x)
-    x = cleaning.replace_hash(x)
-    x = cleaning.alphanum(x)
-    if x:
-        return " ".join(word_tokenize(x))
-    return None
-
-
 class CommitDataset(Dataset):
     def __init__(self, df, transform=None, inference=False):
+        """
+        torch Dataset class for commits
+        :param df: dataframe with either 1 or 2 columns: 'commit_message' and 'is_bot' (latter not needed in inference)
+        :param transform: data transformation function, not used yet
+        :param inference: is dataset used for inference?
+        """
         self.df = df
         self.transform = transform
         self.inference = inference
@@ -75,9 +71,15 @@ class CommitDataModule(pl.LightningDataModule):
         self.test_dataset = None
 
     def __len__(self):
+        """Need that for OneCycleLR learning rate scheduler"""
         return self.train_len
 
     def prepare_data(self, raw=True):
+        """
+        Function for cleaning and loading dataframes
+        :param raw: True if we use raw data, False if the input data is clean
+        :return: None
+        """
         if raw:
             self.df = pd.read_csv(
                 self.path_to_dataset,
@@ -86,23 +88,27 @@ class CommitDataModule(pl.LightningDataModule):
                 names=["commit_message", "is_bot"],
                 encoding_errors="ignore",
                 dtype=str,
-                quoting=3
+                quoting=3,
             )
-            self.df["commit_message"] = [clean_text(x) for x in tqdm(self.df["commit_message"])]
-            self.df.drop_duplicates(subset=("commit_message"), inplace=True)
+            # Cleaning data:
+            self.df["commit_message"] = [
+                cleaning.clean_text(s) for s in tqdm(self.df["commit_message"])
+            ]
+            self.df.drop_duplicates(subset="commit_message", inplace=True)
         else:
             self.df = pd.read_csv(
                 self.path_to_dataset,
                 names=["commit_message", "is_bot"],
             )
         self.df = self.df.dropna()
-        self.df["commit_message"] = [
-            i[: self.max_seq_length] if len(i) > self.max_seq_length else i
-            for i in self.df["commit_message"]
-        ]
         self.df["is_bot"] = [0 if i == "BOT" else 1 for i in self.df["is_bot"]]
 
     def setup(self, stage=None):
+        """
+        Creating torch Dataset objects, splitting into train/test/val
+        :param stage: Not used
+        :return: None
+        """
         dataset_size = self.df.shape[0]
         self.dataset = CommitDataset(self.df)
         self.train_len = int(self.train_size * dataset_size)
@@ -135,8 +141,8 @@ class BertMNLIFinetuner(pl.LightningModule):
         self.bert = BertModel.from_pretrained(
             "distilbert-base-uncased", output_attentions=True
         )
-        self.W = nn.Linear(self.bert.config.hidden_size, 2)
         self.num_classes = 2
+        self.W = nn.Linear(self.bert.config.hidden_size, self.num_classes)
         self.tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
         self.total_steps = total_steps
         self.lr = 4e-5
@@ -147,9 +153,12 @@ class BertMNLIFinetuner(pl.LightningModule):
         ].device
 
     def configure_optimizers(self):
-        optimizer = optim.AdamW(self.parameters(), lr=self.lr, betas=(0.9, 0.998),
-            eps=1e-08,)
-        # scheduler = ExponentialLR(optimizer, gamma=0.9)
+        optimizer = optim.AdamW(
+            self.parameters(),
+            lr=self.lr,
+            betas=(0.9, 0.998),
+            eps=1e-08,
+        )
         scheduler = torch.optim.lr_scheduler.OneCycleLR(
             optimizer, max_lr=self.lr, total_steps=self.total_steps
         )
@@ -158,7 +167,7 @@ class BertMNLIFinetuner(pl.LightningModule):
 
     def forward(self, batch):
         encoded_batch = self.tokenizer.batch_encode_plus(
-            batch["commit_message"], max_length=512, padding='max_length'
+            batch["commit_message"], max_length=512, padding="max_length"
         )
         input_ids = torch.tensor(encoded_batch["input_ids"]).to(self.get_device())
         attention_mask = torch.tensor(encoded_batch["attention_mask"]).to(
@@ -173,7 +182,6 @@ class BertMNLIFinetuner(pl.LightningModule):
         return logits
 
     def _calculate_loss(self, batch, mode="train"):
-        # Fetch data and transform categories to one-hot vectors
         labels = batch["is_bot"]
         preds = self.forward(batch)
         loss = F.cross_entropy(preds.view(-1, preds.size(-1)), labels.view(-1))
@@ -196,7 +204,6 @@ class BertMNLIFinetuner(pl.LightningModule):
 
     def test_step(self, batch, batch_idx):
         loss, _ = self._calculate_loss(batch, mode="test")
-        # return loss
 
 
 def main():
@@ -250,15 +257,22 @@ def main():
             names=["commit_message"],
             encoding_errors="ignore",
             dtype=str,
-            quoting=3
+            quoting=3,
         )
         df["original_message"] = df["commit_message"].copy()
-        df["commit_message"] = [clean_text(x) for x in tqdm(df["commit_message"])]
+        df["commit_message"] = [
+            cleaning.clean_text(s) for s in tqdm(df["commit_message"])
+        ]
         df.dropna(inplace=True)
-        inference_dataloader = DataLoader(CommitDataset(df, inference=True), batch_size=args.batch_size)
+        inference_dataloader = DataLoader(
+            CommitDataset(df, inference=True), batch_size=args.batch_size
+        )
         trainer = pl.Trainer()
-        predictions = [item for sublist in trainer.predict(model, dataloaders=inference_dataloader) for item in sublist]
-
+        predictions = [
+            item
+            for sublist in trainer.predict(model, dataloaders=inference_dataloader)
+            for item in sublist
+        ]
         df["predicted_is_bot"] = ["BOT" if i == 0 else "NON-BOT" for i in predictions]
         df.to_csv("data/results/predictions.csv", index=False)
 
@@ -273,7 +287,6 @@ def main():
         model = BertMNLIFinetuner(total_steps=len(dm.train_dataloader()) * args.epochs)
         wandb_logger = WandbLogger(project="bot-commit-classifier")
 
-        # Initialize a trainer
         trainer = pl.Trainer(
             logger=wandb_logger,
             max_epochs=args.epochs,
