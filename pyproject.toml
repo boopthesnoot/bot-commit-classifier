@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "bot-commit-classifier"
+version = "0.1.0"
+description = "A model that determines whether commit was made by a bot based only on a commit message."
+authors = ["Mikhail Lebedev <lebedev_mikhail@outlook.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "bot_commit_classifier"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+lightning = {url = "https://github.com/Lightning-AI/lightning/archive/refs/heads/master.zip"}
+transformers = "^4.23.1"
+pandas = "^1.5.1"
+nltk = "^3.7"
+numpy = "^1.23.4"
+tqdm = "^4.64.1"
+wandb = "^0.13.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
