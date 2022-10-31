@@ -11,6 +11,8 @@ PyTorch Lightning and Transformers libraries were used for model and dataloader 
 
 As classes were balanced (it was checked in the `notebooks/preprocessing_test.ipynb`, **accuracy** was chosen as a relevant metric for this task.
 
+Here we can look at the training process: https://wandb.ai/hychin/bot-commit-classifier/runs/1ewsw0yy
+
 ## Installation:
 
 Clone this repo, change directory to the `bot-commit-classifier` directory:
