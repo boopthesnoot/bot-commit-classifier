@@ -27,6 +27,7 @@ To install the necessary dependencies, run
 ```bash
 conda env create -f environment.yml
 conda activate bot-commit-classifier
+poetry config experimental.new-installer false && poetry install --no-root
 ```
 
 To obtain the full training dataset, download the following file and unzip it into `data/raw`: https://zenodo.org/record/4042126
@@ -57,12 +58,12 @@ options:
 For example, train on a toy dataset using CPU:
 
 ```
-python src/main.py --mode train --accelerator cpu
+poetry run python src/main.py --mode train --accelerator cpu
 ```
 
 Train on a full dataset using GPU:
 ```
-python src/main.py --mode train --dataset data/raw/bot-nonbot-msgs.csv --accelerator cuda
+poetry run python src/main.py --mode train --dataset data/raw/bot-nonbot-msgs.csv --accelerator cuda
 ```
 
 ### Inference
@@ -70,7 +71,7 @@ python src/main.py --mode train --dataset data/raw/bot-nonbot-msgs.csv --acceler
 Run inference on a toy dataset (first you need to train the model and specify path to checkpoint in the flag `--model`): the input file should consist of commit messages, one per line.
 
 ```
-python src/train.py --mode inference --dataset data/processed/predict_sample_small.txt  --model checkpoints/best.ckpt --accelerator cuda
+poetry run python src/train.py --mode inference --dataset data/processed/predict_sample_small.txt  --model checkpoints/best.ckpt --accelerator cuda
 ```
 
 ### Contacts
