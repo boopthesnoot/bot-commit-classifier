@@ -73,6 +73,6 @@ Run inference on a toy dataset (first you need to train the model and specify pa
 python src/train.py --mode inference --dataset data/processed/predict_sample_small.txt  --model checkpoints/best.ckpt --accelerator cuda
 ```
 
-# Contacts:
+### Contacts
 
-Mikhail Lebedev lebedev_mikhail@outlook.com
+Mikhail Lebedev: lebedev_mikhail@outlook.com
