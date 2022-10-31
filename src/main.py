@@ -10,7 +10,6 @@ import transformers
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.loggers import WandbLogger
 from torch.utils.data import random_split, DataLoader, Dataset
-from torch.optim.lr_scheduler import OneCycleLR
 
 from tqdm import tqdm
 from transformers import AutoTokenizer, BertModel
