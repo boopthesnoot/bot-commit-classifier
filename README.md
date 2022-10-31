@@ -56,6 +56,8 @@ options:
                         Choose the accelerator
 ```
 
+As part of the dependancies were resolved with Poetry, will have to prefix python calls with `poetry run`.
+
 For example, train on a toy dataset using CPU:
 
 ```
