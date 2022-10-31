@@ -1,7 +1,9 @@
 import re
+from nltk.tokenize import word_tokenize
 
 
 def alphanum(element):
+    """Getting rid of Chinese/Japanese characters and other weird stuff"""
     if re.search(r"[^a-zA-Z0-9\s.,\/#!?$%\^&\*;:{}=\-_`~()@+\'\"<>\[\]\\]", element):
         return None
     else:
@@ -9,10 +11,19 @@ def alphanum(element):
 
 
 def replace_linebreaks(element):
+    """Substitute linebreaks with spaces"""
     return re.sub(r"\\n", " ", element).strip()
 
 
+def filter_long_commits(element):
+    """Getting rid of commits that are too long"""
+    if element and len(element) > 512:
+        return None
+    return element
+
+
 def remove_emojis(element):
+    """Substitute emojis with <EMOJI>"""
     emoji_pattern = re.compile(
         "["
         "\U0001F600-\U0001F64F"  # emoticons
@@ -26,4 +37,17 @@ def remove_emojis(element):
 
 
 def replace_hash(element):
+    """Substitute commit hashes and other hashes with <HASH>"""
     return re.sub(r"[0-9a-f]{40}", "<HASH>", element)
+
+
+def clean_text(element):
+    """Applying functions mentioned above"""
+    string = replace_linebreaks(str(element))
+    string = remove_emojis(string)
+    string = replace_hash(string)
+    string = alphanum(string)
+    string = filter_long_commits(string)
+    if string:
+        return " ".join(word_tokenize(string))
+    return None
