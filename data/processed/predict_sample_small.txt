@@ -1,0 +1,100 @@
+commit_message
+Initial AUR Archive commit of 'ros-hydro-rostest ' ( full history will be added later )
+fix ( package ) : update gatsby-source-filesystem to version 2.0.23 Closes # 54
+docs ( readme ) : add Greenkeeper badge
+chore ( deps ) : update dependency webpack to v4.10.1 ( # 139 )
+Update boto3 from 1.9.64 to 1.9.127
+chore ( package ) : update lockfile yarn.lock
+fix ( package ) : update aws-sdk to version 2.72.0
+chore ( package ) : update @ types/lodash to version 4.14.103
+chore ( deps ) : update dependency enzyme-adapter-react-16 to v1.10.0 ( # 572 )
+fix ( package ) : update @ angular/forms to version 5.2.0 Closes # 36
+Updated index.json for github.adetokunbo
+Update dependency @ types/marked to v0.6.1
+chore ( deps ) : update dependency dependency-check to v3.2.0
+Localisation updates from https : //translatewiki.net . Change-Id : I < HASH >
+"Bumping gaia.json for 4 gaia revision ( s ) a=gaia-bump ======== https : //hg.mozilla.org/integration/gaia-central/rev/aac8d6c7c3fe Author : Kevin Grandon < kevingrandon @ yahoo.com > Desc : Merge pull request # 29063 from lightsofapollo/moar-build-chunks Bug 1146484 - now 10 build chunks r=kgrandon ======== https : //hg.mozilla.org/integration/gaia-central/rev/f88360a14d8d Author : James Lal < james @ lightsofapollo.com > Desc : Bug 1146484 - now 10 build chunks r=kgrandon ======== https : //hg.mozilla.org/integration/gaia-central/rev/02e6d431cd49 Author : autolander < bug.autolander @ gmail.com > Desc : Bug 1146484 - merge pull request # 29066 from KevinGrandon : bug_1146484_autolander_build_chunks to mozilla-b2g : master ======== https : //hg.mozilla.org/integration/gaia-central/rev/6c5f7055f252 Author : Kevin Grandon < kevingrandon @ yahoo.com > Desc : Bug 1146484 - Follow-up 
+chore ( package ) : update gatsby-plugin-sharp to version 2.0.29 Closes # 38
+fix ( package ) : update i18next to version 13.0.0 Closes # 436
+Remove Thu Nov 24 2016 16:38:50 GMT+0000 ( UTC )
+chore ( package ) : update sinon to version 6.0.0 Closes # 24
+chore ( package ) : update lockfile package-lock.json
+rebuild pages at 3d320f3
+Initial AUR Archive commit of 'ttf-rockets ' ( full history will be added later )
+Update dependency apollo-cache-inmemory to v1.1.11
+Latest import
+prebuilt.conf : updating FULL_BINHOST Change-Id : I < HASH >
+BR/04-11-2018.txt
+Updated mediawiki/extensions Project : mediawiki/extensions/WikimediaMessages < HASH > Localisation updates from http : //translatewiki.net . Change-Id : I < HASH >
+chore ( package ) : update react-dom to version 16.8.0
+20140821/roo/4.01.0 : fieldslib
+fix ( package ) : update superagent to version 5.0.2 Closes # 20
+"Update patch set 1 Patch Set 1 : Dry run : CQ is trying da patch . Follow status at : https : //chromium-cq-status.appspot.com/v2/patch-status/chromium-review.googlesource.com/645859/1 Bot data : { `` action '' : `` start '' 
+Set domain to www.haughtgraphics.com
+fix ( package ) : update gatsby-plugin-sharp to version 2.0.13 Closes # 52
+chore ( package ) : update lockfile yarn.lock
+New solution for the-domains/coleen
+Deleted Footer and 1 other file
+chore ( package ) : update lockfile yarn.lock
+chore ( package ) : update gatsby-plugin-manifest to version 2.0.25
+Pin paho-mqtt to latest version 1.2
+Backlink to CADLAB.io has been added .
+chore ( package ) : update lockfile package-lock.json
+New solution for the-domains/bloedbond
+fix ( package ) : update gatsby-plugin-typography to version 2.2.4 Closes # 52
+Update gunicorn from 19.8.1 to 19.9.0
+Merge pull request # 17 from tinyalley/dependabot/composer/laravel/framework-5.8.20
+typo
+fix ( package ) : update gatsby-link to version 2.0.7 Closes # 76
+Merge < HASH > into < HASH >
+Merge `` Dash using Addison attributes for interval and stroke width '' into master-skia https : //skia.googlesource.com/skia/+/ < HASH > Change-Id : I < HASH >
+chore ( package ) : update mocha to version 4.1.0
+Updated mediawiki/extensions Project : mediawiki/extensions/UploadWizard < HASH > Correct config documentation mentioning non-existent option Change-Id : I < HASH >
+chore ( package ) : update flow-bin to version 0.64.0 Closes # 24
+chore ( deps ) : update storybook monorepo to v4.0.2
+Import of Version 0.1.5
+chore ( package ) : update flow-bin to version 0.94.0 Closes # 77
+New translations how-not-to-do-it.png ( Italian )
+Update_Dependencies
+Update stats for Sat Jun 22 08:22:00 UTC 2013
+Merge < HASH > into < HASH >
+2.0.12
+nouveau perso : chevalier et femelle denudey
+Merge < HASH > into < HASH >
+chore ( package ) : update eslint-plugin-import to version 2.17.1
+Bump danger from 7.0.14 to 7.0.15 ( # 3215 ) Bumps [ danger ] ( https : //github.com/danger/danger-js ) from 7.0.14 to 7.0.15 . - [ Release notes ] ( https : //github.com/danger/danger-js/releases ) - [ Changelog ] ( https : //github.com/danger/danger-js/blob/master/CHANGELOG.md ) - [ Commits ] ( https : //github.com/danger/danger-js/compare/7.0.14 ... 7.0.15 ) Signed-off-by : dependabot [ bot ] < support @ dependabot.com >
+Latest import
+chore ( deps ) : update dependency typescript to v3.4.5
+Update patch set 20 Patch-set : 20 Label : Verified=+1
+chore ( package ) : update dependencies
+cabal-install : update 1.22.6.0 bottle .
+Initial AUR Archive commit of 'emacs-cc-mode-cvs ' ( full history will be added later )
+: arrow_up : Updating add-on Tautulli to 6b9fd0c
+"Update patch set 4 Patch Set 4 : Dry run : CQ is trying da patch . Follow status at : https : //chromium-cq-status.appspot.com/v2/patch-status/chromium-review.googlesource.com/540763/4 Bot data : { `` action '' : `` start '' 
+Marking set of ebuilds as stable Updating commit hashes in ebuilds to match remote repository . Change-Id : I < HASH > x86-generic-PREFLIGHT_BINHOST.conf : updating PREFLIGHT_BINHOST Change-Id : I < HASH > amd64-generic-PREFLIGHT_BINHOST.conf : updating PREFLIGHT_BINHOST Change-Id : I < HASH > amd64-PREFLIGHT_BINHOST.conf : updating PREFLIGHT_BINHOST Change-Id : I < HASH > regen cache Change-Id : I < HASH > Marking 9999 ebuild for chromeos-base/chromeos-factory as stable . Change-Id : I < HASH >
+chore ( package ) : update gatsby to version 2.3.4
+Deploy nscharrenberg/Kwetter to github.com/nscharrenberg/Kwetter.git : gh-pages
+Latest import
+Update patch set 4 Patch Set 4 : Verified+2 Basic test build succeeded . - mw-skins-Vector-phplint https : //integration.wikimedia.org/ci/job/mw-skins-Vector-phplint/41/console : SUCCESS in 1s Patch-set : 4 Label : Verified=+2
+chore ( package ) : update @ angular-devkit/schematics to version 0.4.0 Closes # 3714
+chore ( package ) : update eslint to version 3.16.1 https : //greenkeeper.io/
+Update wheel from 0.31.0 to 0.33.4
+Promote demo to version 0.0.55
+Merge < HASH > into < HASH >
+New design for 7e878b17-d465-49c6-9661-f9b73ece0c4d/index.html
+Update patch set 1 Patch Set 1 : Main test build failed . - php-composer-validate https : //integration.wikimedia.org/ci/job/php-composer-validate/629/console : SUCCESS in 1s - mediawiki-core-qunit https : //integration.wikimedia.org/ci/job/mediawiki-core-qunit/36056/console : SUCCESS in 32s - mediawiki-phpunit-hhvm https : //integration.wikimedia.org/ci/job/mediawiki-phpunit-hhvm/2095/console : SUCCESS in 3m 09s - mediawiki-phpunit-zend https : //integration.wikimedia.org/ci/job/mediawiki-phpunit-zend/2193/console : SUCCESS in 5m 35s - mediawiki-extensions-hhvm https : //integration.wikimedia.org/ci/job/mediawiki-extensions-hhvm/2227/console : FAILURE in 1m 26s - mediawiki-extensions-zend https : //integration.wikimedia.org/ci/job/mediawiki-extensions-zend/2175/console : SUCCESS in 2m 07s Patch-set : 1
+Replace RawGit with jsDelivr
+Automatic update Using commit < HASH >
+Update avatar.js
+chore ( package ) : update aws-sdk to version 2.402.0
+Update dependency aws-sdk to v2.379.0
+Trigger Travis
+Marking set of ebuilds as stable Update PREFLIGHT_BINHOST=gs : //chromeos-x86-alex/binary/423/prebuilts/board/x86-alex/binary-06.09.11.133648/packages/ in x86-alex-PREFLIGHT_BINHOST.conf Change-Id : I < HASH >
+prebuilt.conf : updating FULL_BINHOST Change-Id : I < HASH >
+Localisation updates from https : //translatewiki.net . Change-Id : I < HASH >
+Update mypy from 0.580 to 0.600
+New design for bolete-and-friends/index.html
+Release v6.0.4
+[ AUTO UPLOAD ]
+Update benchmarks to cf063a4 for build type 'release ' and compiler 'clang-3.7.0 '
+Update botocore from 1.5.5 to 1.5.7 ( # 166 )
