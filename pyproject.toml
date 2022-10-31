@@ -9,13 +9,13 @@ packages = [{include = "bot_commit_classifier"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-lightning = {url = "https://github.com/Lightning-AI/lightning/archive/refs/heads/master.zip"}
 transformers = "^4.23.1"
 pandas = "^1.5.1"
 nltk = "^3.7"
 numpy = "^1.23.4"
 tqdm = "^4.64.1"
 wandb = "^0.13.4"
+setuptools = "^65.5.0"
 
 
 [build-system]
