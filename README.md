@@ -77,6 +77,20 @@ Run inference on a toy dataset (first you need to train the model and specify pa
 poetry run python src/train.py --mode inference --dataset data/processed/predict_sample_small.txt  --model checkpoints/best.ckpt --accelerator cuda
 ```
 
+## Performance
+
+Since classes were balanced (it was checked in the `notebooks/preprocessing_test.ipynb`), **accuracy** was chosen as a relevant metric for this task. For the loss function, cross enthropy was used. Here we can see the performance of the model during training
+
+<img src="https://github.com/boopthesnoot/bot-commit-classifier/blob/main/data/results/W%26B%20Chart%2031_10_2022%2C%2022_00_07.svg" width="500" height="300">
+<img src="https://github.com/boopthesnoot/bot-commit-classifier/blob/main/data/results/W%26B%20Chart%2031_10_2022%2C%2022_15_42.svg" width="500" height="300">
+
+
+Accuracy on the validation dataset:
+
+<img src="https://github.com/boopthesnoot/bot-commit-classifier/blob/main/data/results/W%26B%20Chart%2031_10_2022%2C%2022_19_20.png" width="500" height="300">
+
+These numbers are a bit concerning, and I will have to double check that there are no data leaks.
+
 ### Contacts
 
 Mikhail Lebedev: lebedev_mikhail@outlook.com
