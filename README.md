@@ -29,7 +29,7 @@ conda env create -f environment.yml
 conda activate bot-commit-classifier
 ```
 
-To obtain the full training dataset, download the following file and unzip it into `data/raw`: https://zenodo.org/record/4042126#.Y17zRezMK3J
+To obtain the full training dataset, download the following file and unzip it into `data/raw`: https://zenodo.org/record/4042126
 
 ## Usage
 
